@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs></defs>
+  
+  <path d="M36 20 A48 48 0 0 0 36 100" fill="none" stroke="#DD7333" stroke-width="6" stroke-linecap="round"></path>
+  <path d="M84 20 A48 48 0 0 1 84 100" fill="none" stroke="#DD7333" stroke-width="6" stroke-linecap="round"></path>
+  <text x="60" y="75" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="50" fill="#F6F2ED">fp</text>
+</svg>

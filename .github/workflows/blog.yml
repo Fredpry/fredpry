@@ -1,0 +1,32 @@
+name: Sync latest blog posts
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: readme-writes
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Update README from RSS
+        run: python3 scripts/blog.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "Sync latest blog posts"
+          git pull --rebase
+          git push
